@@ -1,115 +1,102 @@
-📦 Enterprise Data Warehouse (EDW)
+Enterprise Data Warehouse (EDW)
 
-Author: Nithin Suresh
+Author: Nithin Suresh (@nithinarchive)
+ What’s This
 
-📖 Overview
+A hands-on example of building an Enterprise Data Warehouse from raw transactional data, transforming it, and building a star schema for analytics & insights. The repo shows how to go from CSVs → staging → dimension & fact tables with SCD-Type2 support, to support BI-style queries.
 
-This project demonstrates the design and implementation of an Enterprise Data Warehouse (EDW) solution. It takes raw transactional data, applies ETL processes, and transforms it into a star schema model suitable for analytics and business intelligence.
+📦 Contents
 
-The warehouse is built to:
+Here’s what this repo has:
 
-Handle incremental loads with updated records.
+Folder / File	What it does
+*.csv & *_updated.csv (Customers, Orders, Products, Stores, etc.)	Simulated source data (initial + incremental updates)
+Staging_Upsert.py	Loads raw & updated data into staging, handles upserts
+data_verification.py	Checks data quality / integrity in staging or after transformations
+fact_table_population.py	Populates the fact table in the star schema
+dimension_tables.sql & creating_table.sql	Schema definitions (dimensions & fact), creation scripts
+staging.sql & queries.sql	Staging layer SQL + sample analytics queries
+lambda_triggering.py	(optional / placeholder) for triggering ETL pieces — maybe for Lambda or similar services
+🧠 Architecture & Data Flow
 
-Implement Slowly Changing Dimensions (Type-2) to track historical changes.
+Here’s how the pipeline works:
 
-Provide a robust foundation for reporting and decision-making.
+Raw CSVs (transactions + updates)
+     ↓ Extract / Upsert into Staging
+     ↓ Data Cleansing & Validation
+     ↓ Transformations + Slowly Changing Dimensions (Type 2)
+     ↓ Load into Star Schema:
+           • fact_sales (metrics / sales)
+           • dim_customer, dim_product, dim_store, dim_date
+     ↓ Analytical / BI queries & reports
 
-🏗️ Architecture
-flowchart TD
-    A[Raw CSV Data] --> B[Staging Layer]
-    B --> C[Transformations & SCD Type-2]
-    C --> D[Star Schema: Fact + Dimensions]
-    D --> E[Analytics & Insights]
 
-🗂️ Data Model
-Source Data (Relational CSVs)
+Key features:
 
-Customers
+Incremental loads (updates) supported
 
-Products
+SCD-Type2 on dimension tables (track history)
 
-Stores
+Referential integrity between fact & dimension tables
 
-Orders
-
-OrderDetails
-
-Data Warehouse (Star Schema)
-
-Fact Table
-
-fact_sales: Central table capturing sales metrics.
-
-Dimension Tables
-
-dim_customer – Customer attributes with SCD2 handling.
-
-dim_product – Product catalog with historical tracking.
-
-dim_store – Store metadata.
-
-dim_date – Calendar dimension for time-based analysis.
-
-🔄 ETL Process
-
-Extract
-
-Load raw & updated CSVs into staging tables.
-
-Transform
-
-Cleanse data (remove duplicates, validate integrity).
-
-Apply business rules (e.g., revenue calculation).
-
-Implement SCD Type-2 for historical tracking.
-
-Load
-
-Populate star schema tables.
-
-Ensure referential integrity across facts and dimensions.
-
-📊 Business Insights
-
-This warehouse supports queries such as:
-
-Top 10 products by sales & revenue.
-
-Monthly and quarterly revenue trends.
-
-Store-wise sales performance.
-
-Customer purchase frequency and average order value.
+Verifications to ensure data quality
 
 ⚙️ Tech Stack
 
-Python – ETL scripting, upserts, validation.
+Language: Python (ETL scripts, upsert logic, validation etc.)
 
-SQL – Table creation, transformations, analytics queries.
+SQL: For schema definitions, transformations, queries
 
-PostgreSQL / Amazon Redshift – Data warehouse layer.
+Data Source: CSV files (raw + incremental)
 
-CSV – Simulated source system files.
+DW Layer: Could be PostgreSQL / Redshift / etc. (depends on your infra)
 
-🚀 Future Roadmap
+Other Concepts: SCD-Type2, star schema, staging layer, fact & dimension, etc.
 
-Automate pipeline using Airflow / Prefect.
+🔍 Sample Use-Cases / Queries
 
-Extend schema with marketing & promotions data.
+Some business questions this setup can help answer:
 
-Introduce Change Data Capture (CDC) for real-time updates.
+What are the top 10 products by revenue?
 
-Add visualization layer (Power BI, QuickSight, Tableau).
+How’s revenue trending monthly / quarterly?
 
-👤 Author
+Which stores are underperforming or outperforming?
 
-Nithin Suresh
-GitHub: nithinarchive
+What’s customer purchase frequency / average order value over time?
 
-**Dimesional Modelling Flow Diagram**
-![Flow Diagram](https://github.com/SaadAhmedWaqar/Data-Warehousing-Redshift/assets/105427072/12932ef0-4a52-4c31-a190-910439385980)
+How do changes in product attributes or customer details over time affect sales? (via historical tracking)
 
+🛣️ Roadmap / Ideas for Next Level
 
+Here’s where this can grow:
 
+Automate the whole ETL pipeline (Airflow / Prefect / Dagster etc.)
 
+Add real-time or near-real-time data ingest (Change Data Capture, streaming)
+
+Add more source domains: marketing, promotions, returns, logistics etc.
+
+Add dashboards / viz layer (Tableau, PowerBI, Looker, Superset etc.)
+
+Add alerts for data anomalies
+
+Optimize for scale: partitioning, indexing, possibly OLAP features
+
+🧩 How To Run It
+
+Clone the repo.
+
+Set up a database (e.g. PostgreSQL) & create needed schema / tables (using SQL scripts).
+
+Place the raw CSVs & the updated ones in expected folder(s).
+
+Run Staging_Upsert.py to load data into staging.
+
+Run transformation scripts / SQL to apply SCD, build dim & fact.
+
+Use data_verification.py to check integrity.
+
+Run sample queries in queries.sql to validate analytics.
+
+(You may need to configure database connection credentials / paths etc. in the Python scripts.)
