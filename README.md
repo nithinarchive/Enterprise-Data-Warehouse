@@ -8,7 +8,6 @@ A hands-on example of building an Enterprise Data Warehouse from raw transaction
 
 Here’s what this repo has:
 
-Folder / File	What it does
 *.csv & *_updated.csv (Customers, Orders, Products, Stores, etc.)	
 
 Staging_Upsert.py	Loads raw & updated data into staging, handles upserts
