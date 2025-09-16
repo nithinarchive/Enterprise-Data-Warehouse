@@ -1,7 +1,7 @@
-Enterprise Data Warehouse (EDW)
+# Enterprise Data Warehouse 
 
-Author: Nithin Suresh (@nithinarchive)
- What’s This
+# Author: Nithin Suresh
+
 
 A hands-on example of building an Enterprise Data Warehouse from raw transactional data, transforming it, and building a star schema for analytics & insights. The repo shows how to go from CSVs → staging → dimension & fact tables with SCD-Type2 support, to support BI-style queries.
 
