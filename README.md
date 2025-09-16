@@ -69,5 +69,5 @@ Pro Tip: Use sort keys and distribution keys on fact tables in Redshift for fast
 - Add logging & alerting for data anomalies
 - Expand data sources: marketing, promotions, returns, logistics
 
-## License
-(Add your license here if needed)
+## Diagram
+
