@@ -54,7 +54,7 @@ SQL: For schema definitions, transformations, queries
 
 Data Source: CSV files (raw + incremental)
 
-DW Layer: Could be PostgreSQL / Redshift / etc. (depends on your infra)
+DW Layer: Redshift
 
 Other Concepts: SCD-Type2, star schema, staging layer, fact & dimension, etc.
 
