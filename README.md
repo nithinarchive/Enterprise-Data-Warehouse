@@ -1,11 +1,10 @@
 # Enterprise Data Warehouse 
-
-# Author: Nithin Suresh
+# By Nithin Suresh
 
 
 A hands-on example of building an Enterprise Data Warehouse from raw transactional data, transforming it, and building a star schema for analytics & insights. The repo shows how to go from CSVs → staging → dimension & fact tables with SCD-Type2 support, to support BI-style queries.
 
-📦 Contents
+# Contents
 
 Here’s what this repo has:
 
@@ -17,7 +16,8 @@ fact_table_population.py	Populates the fact table in the star schema
 dimension_tables.sql & creating_table.sql	Schema definitions (dimensions & fact), creation scripts
 staging.sql & queries.sql	Staging layer SQL + sample analytics queries
 lambda_triggering.py	(optional / placeholder) for triggering ETL pieces — maybe for Lambda or similar services
-🧠 Architecture & Data Flow
+
+# Architecture & Data Flow
 
 Here’s how the pipeline works:
 
