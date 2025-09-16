@@ -9,12 +9,18 @@ A hands-on example of building an Enterprise Data Warehouse from raw transaction
 Here’s what this repo has:
 
 Folder / File	What it does
-*.csv & *_updated.csv (Customers, Orders, Products, Stores, etc.)	Simulated source data (initial + incremental updates)
+*.csv & *_updated.csv (Customers, Orders, Products, Stores, etc.)	
+
 Staging_Upsert.py	Loads raw & updated data into staging, handles upserts
+
 data_verification.py	Checks data quality / integrity in staging or after transformations
+
 fact_table_population.py	Populates the fact table in the star schema
+
 dimension_tables.sql & creating_table.sql	Schema definitions (dimensions & fact), creation scripts
+
 staging.sql & queries.sql	Staging layer SQL + sample analytics queries
+
 lambda_triggering.py	(optional / placeholder) for triggering ETL pieces — maybe for Lambda or similar services
 
 # Architecture & Data Flow
