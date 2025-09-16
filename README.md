@@ -1,4 +1,4 @@
-# 🚀 Enterprise Data Warehouse on Redshift
+# Enterprise Data Warehouse
 **Author:** Nithin Suresh ([GitHub](https://github.com/nithinarchive))
 *Building a star schema ETL pipeline on AWS Redshift from raw S3 data to analytics-ready fact & dimension tables.*
 
