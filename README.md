@@ -71,5 +71,5 @@ Pro Tip: Use sort keys and distribution keys on fact tables in Redshift for fast
 - Expand data sources: marketing, promotions, returns, logistics
 
 ## Diagram
-![Data Warehouse](Enterprise-Data-Warehouse/Data%20Warehouse.jpg)
+![Data Warehouse](Data%20Warehouse.jpg)
 
