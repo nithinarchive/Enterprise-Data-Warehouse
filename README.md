@@ -59,6 +59,7 @@ S3 (CSV files / relational data) → Redshift Staging Tables → Data Cleansing 
 5. Run staging load script → transformations → fact & dimension population
 6. Use `data_verification.py` to ensure data integrity
 7. Run queries in `queries.sql` for analytics
+8. 
 Pro Tip: Use sort keys and distribution keys on fact tables in Redshift for faster queries
 
 ## Roadmap / Next Steps
